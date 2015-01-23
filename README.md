@@ -9,11 +9,7 @@
 
 (C) 2014 Martin Wawrusch
 
-# Provides a backend data store to manage accounts associated with users.
-
-The purpose of this module is to provide account management functionality similar to
-those found in SAAS sites like new relic. Core assumptions is that a user can have access
-to multiple accounts, and that Stripe is used for billing (note: We might factor out the whole stripe billing part into it's own billing module).
+Provides a simple storage mechanism for in app notifications. Notifications can be sent from either a specific user or targeting a specific role (e.g. all users in that role)
 
 
 ## See also
