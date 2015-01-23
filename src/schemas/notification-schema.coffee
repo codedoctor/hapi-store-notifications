@@ -21,7 +21,7 @@ module.exports = NotificationSchema = new mongoose.Schema
         required: false
 
       ###
-      This is the role that it has been sent from (e.g. a notification for all data-senegal people)
+      This is the role that it has been sent from (e.g. a notification for all data-xxx people)
       ###
       involvesRole:
         type: String

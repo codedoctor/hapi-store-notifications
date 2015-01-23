@@ -20,57 +20,43 @@ describe 'WHEN index has been loaded', ->
         setupData plugin, (err) ->
           cb err
 
-    it 'it should delete an account', (cb) ->
-      plugin.accounts.destroy fixtures.account1._id, null, (err) ->
+    it 'it should delete an notification', (cb) ->
+      plugin.notifications.destroy fixtures.notification1._id, null, (err) ->
         should.not.exist err
         cb err
 
 
-    it 'it should update an account', (cb) ->
-      plugin.accounts.patch fixtures.account1._id, {name: 'xxx'}, null, (err,account) ->
+    it 'it should update an notification', (cb) ->
+      plugin.notifications.patch fixtures.notification1._id, {message: 'xxx'}, null, (err,notification) ->
         should.not.exist err
-        should.exist account
-        account.should.have.property 'name','xxx'
+        should.exist notification
+        notification.should.have.property 'message','xxx'
         cb err
 
-    it 'it should get an account', (cb) ->
-      plugin.accounts.get fixtures.account1._id, null, (err,account) ->
+    it 'it should get an notification', (cb) ->
+      plugin.notifications.get fixtures.notification1._id, null, (err,notification) ->
         should.not.exist err
-        should.exist account
-        account.should.have.property 'name',fixtures.account1.name
+        should.exist notification
+        notification.should.have.property 'message',fixtures.notification1.message
         cb err
 
-    it 'it should get all accounts', (cb) ->
-      plugin.accounts.all null, (err,accountsResult) ->
+    it 'it should get all notifications', (cb) ->
+      plugin.notifications.all null, (err,notificationsResult) ->
         should.not.exist err
-        should.exist accountsResult
-        accountsResult.should.have.property 'items'
-        accountsResult.items.length.should.equal 3
-
-        cb err
-
-    it 'it should get all accounts for owner', (cb) ->
-      plugin.accounts.getAllForOwner fixtures.userId, null, (err,accountsResult) ->
-        should.not.exist err
-        should.exist accountsResult
-        accountsResult.should.have.property 'items'
-        accountsResult.items.length.should.equal 2
+        should.exist notificationsResult
+        notificationsResult.should.have.property 'items'
+        notificationsResult.items.length.should.equal 3
 
         cb err
 
-    it 'it should get count accounts for owner', (cb) ->
-      plugin.accounts.countAllForOwner fixtures.userId, null, (err,totalCount) ->
+    it 'it should get all notifications for owner', (cb) ->
+      plugin.notifications.getForOwner fixtures.userId, null, (err,notificationsResult) ->
         should.not.exist err
-        should.exist totalCount
-        totalCount.should.equal 2
+        should.exist notificationsResult
+        notificationsResult.should.have.property 'items'
+        notificationsResult.items.length.should.equal 2
 
         cb err
 
 
-    it 'it should get first one by name for owner', (cb) ->
-      plugin.accounts.getForOwner fixtures.userId, null, (err,account) ->
-        console.log JSON.stringify(account)
-        should.not.exist err
-        should.exist account
-        account.should.have.property 'name',fixtures.account1.name
-        cb err
+

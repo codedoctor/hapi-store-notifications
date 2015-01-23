@@ -19,10 +19,10 @@ describe 'WHEN index has been loaded', ->
         cb null
 
 
-    it 'it should create an account', (cb) ->
-      plugin.accounts.create fixtures.account1, null, (err,account) ->
+    it 'it should create an notification', (cb) ->
+      plugin.notifications.create fixtures.notification1, null, (err,notification) ->
         should.not.exist err
-        should.exist account
+        should.exist notification
         cb err
 
 
